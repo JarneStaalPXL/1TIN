@@ -53,10 +53,13 @@ public class Hotel {
     }
 
     public double getPrijsKind(){
-        double prijs = 0;
-        if (this.kindercode.equals("A") || this.hotelcode.equals("HA")) {
-            prijs = getPrijs() - (getPrijs() *50) /100;
+        double prijsKind = getPrijs() / 2.0;
+        if (kindercode == 'A') {
+            if (hotelcode.equals("HA") || sterren == 1 || sterren == 2) {
+                prijsKind = 0;
+            }
         }
-        return prijs;
+        return prijsKind;
+
     }
 }
