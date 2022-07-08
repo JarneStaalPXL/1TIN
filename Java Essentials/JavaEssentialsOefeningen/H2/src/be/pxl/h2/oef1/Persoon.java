@@ -11,6 +11,46 @@ public class Persoon {
     public double gewicht;
     public Year geboortejaar;
 
+    public Persoon(){
+
+    }
+    public Persoon(String naam, String voornaam){
+        this.naam = naam;
+        this.voornaam = voornaam;
+    }
+
+    public Persoon(Persoon persoon){
+        this.naam = persoon.naam;
+        this.voornaam = persoon.voornaam;
+        this.lengte = persoon.lengte;
+        this.gewicht = persoon.gewicht;
+        this.geboortejaar = persoon.geboortejaar;
+    }
+
+    public String getVoornaam() {
+        return voornaam;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public double getLengte() {
+        return lengte;
+    }
+
+    public double getGewicht() {
+        return gewicht;
+    }
+
+    public Year getGeboortejaar() {
+        return geboortejaar;
+    }
+
+    public int getLeeftijd(){
+        return Year.now().getValue() - geboortejaar.getValue();
+    }
+
     public void setVoornaam(String voornaam) {
         this.voornaam = voornaam;
     }
@@ -19,8 +59,13 @@ public class Persoon {
         this.naam = naam;
     }
 
-    public void setLengte(double lengte) {
-        this.lengte = lengte;
+    public void setLengte(double lengte, boolean add) {
+        if(lengte > 2.40){
+            if(add) this.lengte += 2.40;
+            else this.lengte = 2.40;
+        }
+        else if(add) this.lengte += lengte;
+        else this.lengte = lengte;
     }
 
     public void setGewicht(double gewicht) {
@@ -33,6 +78,43 @@ public class Persoon {
 
     public double berekenBMI(){
         return gewicht / (lengte * lengte);
+    }
+
+    public String geefOmschrijving(){
+        double bmi = berekenBMI();
+        String omschrijving = "";
+        if(bmi < 18){
+            omschrijving = "ondergewicht";
+        }
+        else if(bmi >= 18 && bmi < 25){
+            omschrijving = "normaal";
+        }
+        else if(bmi >= 25 && bmi < 30){
+            omschrijving = "overgewicht";
+        }
+        else if(bmi >= 30 && bmi < 40){
+            omschrijving = "obesitas";
+        }
+        else if(bmi >= 40){
+            omschrijving = "morbide obesitas";
+        }
+
+        return omschrijving;
+    }
+
+    public void voegVoornamenToe(String[] voornamen){
+        for(String voornaam : voornamen){
+            this.voornaam += (" " + voornaam);
+        }
+    }
+
+    public void groei(){
+        setLengte(0.01,true);
+    }
+
+    public void groei(double aantalCm){
+        aantalCm = aantalCm/100;
+        setLengte(aantalCm,true);
     }
 
     @Override
