@@ -1,5 +1,6 @@
 package be.pxl.h3.oef2;
 
+import java.text.DecimalFormat;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,16 +32,14 @@ public class MuntApp {
             System.out.printf(munt.getKoers() + " " + munt.getNaam()+"\n");
         }
         System.out.println("Overzicht koersen tov BRITSE POND: 1 BRITSE POND = ");
+
+        DecimalFormat df = new DecimalFormat("#.###");
         for(Munt munt : listOfCoins){
-            //calculate difference between munt and britsePond
             if(!munt.equals(listOfCoins.get(0))){
                 var difference = munt.getKoers() / britsePond.getKoers();
-
-                System.out.printf(difference+ " " + munt.getNaam()+"\n");
+                System.out.println(df.format(difference)+ " " + munt.getNaam());
             }
         }
-
-
 
 //        Random rng = new Random(100);
 //

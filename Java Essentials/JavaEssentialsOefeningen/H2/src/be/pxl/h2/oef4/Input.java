@@ -21,7 +21,8 @@ public class Input {
 
     public static int readInt(){
         var scanner = getScanner();
-        return scanner.nextInt();
+
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static int readInt(String msg){
