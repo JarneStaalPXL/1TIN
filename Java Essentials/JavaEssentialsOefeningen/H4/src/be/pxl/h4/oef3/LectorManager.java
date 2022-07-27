@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LectorManager {
-    public List<Lector> lectorList = new ArrayList<Lector>();
     public static void main(String[] args){
         Lector daemsGreta = new Lector();
         daemsGreta.setVoorNaam("Daems");
