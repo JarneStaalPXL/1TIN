@@ -29,6 +29,6 @@ public class Persoon {
     }
 
     public void print() {
-        System.out.println("naam: " + voornaam + " " + naam);
+        System.out.println("\n"+voornaam + " " + naam);
     }
 }
