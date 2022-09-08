@@ -1,5 +1,8 @@
 package be.pxl.h6.test;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class KleurApp {
     public enum Dag{MAANDAG, DINSDAG, WOENSDAG, DONDERDAG, VRIJDAG, ZATERDAG, ZONDAG}
 
@@ -13,6 +16,15 @@ public class KleurApp {
         //check what day comes first
         if(someDay.ordinal() < someOtherDay.ordinal()) {
             System.out.println(someDay + " komt eerst voor");
+        }
+
+        String[] days = {"MAANDAG", "DINSDAG", "WOENSDAG", "DONDERDAG", "VRIJDAG", "ZATERDAG", "ZONDAG"};
+
+        //copy days array
+        String[] daysCopy = Arrays.copyOf(days, days.length);
+        Collections.shuffle(Arrays.asList(Arrays.copyOf(days, days.length)));
+        for(String d : daysCopy){
+            System.out.println(d);
         }
     }
 
